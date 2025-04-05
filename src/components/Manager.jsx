@@ -61,10 +61,11 @@ const Manager = () => {
         passwordRef.current.type = "text"
         if (ref.current.src.includes("icons/hidden.png")) {
             ref.current.src = "icons/view.png"
-            passwordRef.current.type = "password"
+            passwordRef.current.type = "text"
         }
         else {
-            passwordRef.current.type = "text"
+            passwordRef.current.type = "password"
+            
             ref.current.src = "icons/hidden.png"
 
         }
@@ -185,12 +186,12 @@ const Manager = () => {
                 <p className='text-green-800 font-semibold text-center text-lg'>Your Own Password Manager</p>
 
                 <div className="text-white  flex flex-col gap-7 p-4 items-center">
-                    <input value={form.site} onChange={handleChange} placeholder='Enter Website Name' className='rounded-lg border text-black   border-[#5B156F] w-full p-4  py-1 ' type="text" name='site' id='site' />
+                    <input value={form.site} onChange={handleChange} placeholder='Enter Website Name' className='rounded-lg   border-1 text-black   border-[#5B156F] w-full p-4  py-1 ' type="text" name='site' id='site' />
                     <div className="flex flex-col md:flex-row w-full gap-10 justify-between">
-                        <input value={form.username} onChange={handleChange} placeholder='Enter Username' className='rounded-lg border text-black   border-[#5B156F] w-full p-4  py-1 ' type="text" name='username' id='username' />
+                        <input value={form.username} onChange={handleChange} placeholder='Enter Username' className='rounded-lg   border-1 text-black   border-[#5B156F] w-full p-4  py-1 ' type="text" name='username' id='username' />
                         <div className="relative">
 
-                            <input ref={passwordRef} value={form.password} onChange={handleChange} placeholder='Enter Password' className='rounded-lg border text-black   border-[#5B156F] w-full p-4  py-1 ' type="password" name='password' id='password' />
+                            <input ref={passwordRef} value={form.password} onChange={handleChange} placeholder='Enter Password' className='rounded-lg   border-1 text-black   border-[#5B156F] w-full p-4  py-1 ' type="password" name='password' id='password' />
                             <span className='absolute right-[3px] top-[4px] cursor-pointer ' onClick={showPassword}>
                                 <img ref={ref} className='p-1' width={26} src="/icons/view.png" alt="" />
                             </span>
@@ -209,7 +210,7 @@ const Manager = () => {
                         Save Password</button>
                 </div>
 
-                <div className="passwords">
+                <div className="passwords mb-24">
                     <h2 className='text-white font-bold text-2xl py-4'>Your Passwords</h2>
                     {passwordArray.length === 0 && <div className='text-red-500 font-bold m-2'> *No Passwords to show</div>}
                     {passwordArray.length != 0 &&
@@ -222,13 +223,13 @@ const Manager = () => {
                                     <th className='py-2'>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody className='bg-green-100'>
+                            <tbody className='bg-green-200'>
                                 {passwordArray.map((item, index) => {
                                     return <tr key={index}>
-                                        <td className='py-2 border border-white text-center w-24'>{item.site} </td>
-                                        <td className='py-2 border border-white text-center w-24'>{item.username}</td>
+                                        <td className='py-2   border-4 border-white text-center w-24'>{item.site} </td>
+                                        <td className='py-2   border-4 border-white text-center w-24'>{item.username}</td>
 
-                                        <td className='py-2 border border-white text-center w-24'>
+                                        <td className='py-2   border-4 border-white text-center w-24'>
                                             <div className="flex justify-between items-center mx-3">
                                                 <span>{item.password}</span>
                                                 <div className="cursor-pointer  mx-3" onClick={() => copyText(item.password)}>
@@ -236,7 +237,7 @@ const Manager = () => {
                                                 </div>
                                             </div>
                                         </td>
-                                        <td className='py-2 border justify-center  border-white text-center w-24'>
+                                        <td className='py-2   border-4 justify-center  border-white text-center w-24'>
                                             <span className='cursor-pointer mx-1' onClick={()=>{editPassword(item.id)}}>
                                                 <lord-icon
                                                     src="https://cdn.lordicon.com/vhyuhmbl.json"
